@@ -3,13 +3,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Round Table</title>
+  <title>The Round Table | Mike Cesaroni</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <h1>Round Table</h1>
-    <p>Coming soon.</p>
-  </main>
+
+  <header class="site-header">
+    <div class="wrap">
+      <span class="logo">THE ROUND TABLE</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Built for Blue-Collar Business Owners Ready to Scale</h1>
+      <p class="subhead">
+        Mike Cesaroni grew his HVAC business to $5M in 3 years. Now he helps other
+        blue-collar business owners start, grow, and scale their companies &mdash;
+        inside The Round Table.
+      </p>
+      <a href="#video" class="btn">Watch The Video Below</a>
+    </div>
+  </section>
+
+  <section id="video" class="vsl">
+    <div class="wrap">
+      <h2>Watch This First</h2>
+      <p>See how The Round Table works and whether it's a fit for your business.</p>
+      <div class="video-placeholder">
+        <span class="play-icon">&#9658;</span>
+        <span class="video-label">Video Coming Soon</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="quiz">
+    <div class="wrap">
+      <h2>See If You Qualify</h2>
+      <p>Answer a few quick questions so Mike can prepare for your call.</p>
+
+      <form id="qualify-form" class="quiz-form">
+
+        <div class="quiz-step" data-step="1">
+          <label>What industry is your business in?</label>
+          <select name="industry" required>
+            <option value="" disabled selected>Select one</option>
+            <option>HVAC</option>
+            <option>Plumbing</option>
+            <option>Electrical</option>
+            <option>Construction</option>
+            <option>Landscaping</option>
+            <option>Other</option>
+          </select>
+          <button type="button" class="btn next-step">Next</button>
+        </div>
+
+        <div class="quiz-step" data-step="2" hidden>
+          <label>What's your current monthly revenue?</label>
+          <select name="revenue" required>
+            <option value="" disabled selected>Select one</option>
+            <option>Just starting out</option>
+            <option>$10K &ndash; $30K</option>
+            <option>$30K &ndash; $75K</option>
+            <option>$75K &ndash; $150K</option>
+            <option>$150K+</option>
+          </select>
+          <button type="button" class="btn next-step">Next</button>
+        </div>
+
+        <div class="quiz-step" data-step="3" hidden>
+          <label>What's your biggest challenge right now?</label>
+          <select name="challenge" required>
+            <option value="" disabled selected>Select one</option>
+            <option>Getting more leads</option>
+            <option>Systems &amp; processes</option>
+            <option>Hiring &amp; team</option>
+            <option>Scaling operations</option>
+            <option>Cash flow</option>
+          </select>
+          <button type="button" class="btn next-step">Next</button>
+        </div>
+
+        <div class="quiz-step" data-step="4" hidden>
+          <label>Are you the owner or a decision maker for this business?</label>
+          <select name="decision_maker" required>
+            <option value="" disabled selected>Select one</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          <button type="button" class="btn next-step">Next</button>
+        </div>
+
+        <div class="quiz-step" data-step="5" hidden>
+          <label>Name</label>
+          <input type="text" name="name" required>
+          <label>Email</label>
+          <input type="email" name="email" required>
+          <label>Phone</label>
+          <input type="tel" name="phone" required>
+          <button type="submit" class="btn">See My Results</button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <section id="booking" class="booking" hidden>
+    <div class="wrap">
+      <h2>Book Your Free Discovery Call</h2>
+      <p>Pick a time below that works for you &mdash; Mike will call you then.</p>
+      <div class="calendly-placeholder">
+        <!-- Calendly embed code goes here -->
+        <span>Calendly booking widget will go here</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; <span id="year"></span> The Round Table. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
