@@ -42,7 +42,10 @@
       <h2>See If You Qualify</h2>
       <p>Answer a few quick questions so Mike can prepare for your call.</p>
 
-      <form id="qualify-form" class="quiz-form">
+      <form id="qualify-form" class="quiz-form" action="https://formsubmit.co/mikecesaroni1@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Round Table Lead">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
 
         <div class="quiz-step" data-step="1">
           <label>What industry is your business in?</label>
@@ -112,10 +115,8 @@
     <div class="wrap">
       <h2>Book Your Free Discovery Call</h2>
       <p>Pick a time below that works for you &mdash; Mike will call you then.</p>
-      <!-- Calendly inline widget begin -->
-      <div class="calendly-inline-widget" data-url="https://calendly.com/mikecesaroni1/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+      <div id="calendly-embed" style="min-width:320px;height:700px;"></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-      <!-- Calendly inline widget end -->
     </div>
   </section>
 
