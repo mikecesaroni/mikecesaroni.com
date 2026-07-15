@@ -6,43 +6,48 @@
   <title>The Round Table | Mike Cesaroni</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="site-header">
     <div class="wrap-wide header-inner">
-      <span class="logo">THE ROUND TABLE</span>
-      <a href="#quiz" class="btn btn-small">Book a Call</a>
+      <a href="#top" class="logo-lockup">
+        <svg class="logo-mark" viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+          <circle cx="24" cy="24" r="21" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="24" cy="24" r="16" fill="none" stroke="var(--accent)" stroke-width="1"/>
+          <path d="M24 14 L28 22 L24 20 L20 22 Z" fill="var(--accent)"/>
+          <circle cx="24" cy="27" r="4" fill="none" stroke="var(--accent)" stroke-width="1"/>
+        </svg>
+        <span class="logo-word">The Round Table</span>
+      </a>
+      <a href="#quiz" class="btn btn-small"><span class="phone-icon">&#9742;</span> Book a Call</a>
     </div>
   </header>
 
-  <section class="hero">
+  <section id="top" class="hero">
     <div class="wrap-wide">
-      <p class="eyebrow">&mdash;&mdash; For HVAC, Plumbing &amp; Electrical Owners at $1M&ndash;$5M &mdash;&mdash;</p>
+      <p class="eyebrow"><span class="rule"></span>For HVAC, Plumbing &amp; Electrical Owners at $1M&ndash;$5M<span class="rule"></span></p>
       <h1>
-        <span class="line-white">$200K to $3M in 24 Months.</span>
+        <span class="line-white">$1M to $3M in 24 Months.</span>
         <span class="line-gold">Without hiring wrong.</span>
         <span class="line-gold">Without burning out.</span>
         <span class="line-gold">Without selling out.</span>
       </h1>
       <p class="subhead">
-        The Round Table is Mike Cesaroni's coaching program for HVAC, plumbing,
+        The <span class="brand-split"><span class="split-a">Round</span><span class="split-b">table</span></span>
+        is Mike Cesaroni's coaching program for HVAC, plumbing,
         electrical, roofing, and GC owners. Three entry points by where you're at.
       </p>
     </div>
 
     <div id="video" class="wrap-wide">
       <div class="video-wrap">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/KjpVAPNrH14"
-          title="The Round Table VSL"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+        <div id="yt-player"></div>
+        <button id="sound-toggle" class="sound-toggle" aria-label="Toggle sound">&#128264;</button>
       </div>
+      <p class="tap-hint">Tap for sound</p>
       <p class="video-caption">Built by Mike Cesaroni &mdash; who took Horizon HVAC from $200K to $3M in 24 months.</p>
 
       <a href="#quiz" class="btn btn-big">Book a Call With Our Team &rarr;</a>
@@ -191,7 +196,7 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <span class="logo">THE ROUND TABLE</span>
+      <span class="footer-logo">THE ROUND TABLE</span>
       <p>&copy; <span id="year"></span> The Round Table. All rights reserved.</p>
     </div>
   </footer>

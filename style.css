@@ -18,9 +18,10 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  font-family: 'Anton', 'Oswald', sans-serif;
   letter-spacing: 1px;
-  line-height: 1.1;
+  line-height: 1.05;
+  font-weight: 400;
 }
 
 .wrap {
@@ -87,10 +88,24 @@ h1, h2, h3 {
   justify-content: space-between;
 }
 
-.logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
+.logo-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-decoration: none;
+}
+
+.logo-word {
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
   letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.phone-icon {
+  margin-right: 4px;
 }
 
 .hero {
@@ -104,7 +119,26 @@ h1, h2, h3 {
   font-size: 13px;
   letter-spacing: 2px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.eyebrow .rule {
+  height: 1px;
+  width: 40px;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.brand-split .split-a {
+  color: var(--text);
+}
+
+.brand-split .split-b {
+  color: var(--accent);
 }
 
 .hero h1 {
@@ -132,6 +166,7 @@ h1, h2, h3 {
 }
 
 .video-wrap {
+  position: relative;
   margin-top: 40px;
   aspect-ratio: 16 / 9;
   background: #000;
@@ -140,16 +175,37 @@ h1, h2, h3 {
   overflow: hidden;
 }
 
-.video-wrap iframe {
+.video-wrap iframe,
+.video-wrap #yt-player {
   width: 100%;
   height: 100%;
   border: 0;
 }
 
+.sound-toggle {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.65);
+  color: var(--text);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.tap-hint {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 14px 0 0;
+}
+
 .video-caption {
   color: var(--muted);
   font-size: 15px;
-  margin-top: 16px;
+  margin-top: 4px;
 }
 
 .fine-print {
@@ -243,6 +299,25 @@ h1, h2, h3 {
   font-weight: 600;
   font-size: 17px;
   font-family: 'Oswald', sans-serif;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: '+';
+  color: var(--accent);
+  font-size: 22px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.faq details[open] summary::after {
+  content: '\2212';
 }
 
 .faq details p {
@@ -303,9 +378,13 @@ h1, h2, h3 {
   border-top: 1px solid var(--border);
 }
 
-.site-footer .logo {
+.footer-logo {
   display: block;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 2px;
+  font-size: 18px;
   margin-bottom: 12px;
+  color: var(--text);
 }
 
 @media (max-width: 640px) {

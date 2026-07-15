@@ -1,5 +1,28 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+let ytPlayer;
+const ytApiScript = document.createElement('script');
+ytApiScript.src = 'https://www.youtube.com/iframe_api';
+document.head.appendChild(ytApiScript);
+
+window.onYouTubeIframeAPIReady = function () {
+  ytPlayer = new YT.Player('yt-player', {
+    videoId: 'KjpVAPNrH14',
+    playerVars: { autoplay: 1, mute: 1, playsinline: 1, rel: 0, modestbranding: 1 },
+  });
+};
+
+document.getElementById('sound-toggle').addEventListener('click', () => {
+  if (!ytPlayer || !ytPlayer.isMuted) return;
+  if (ytPlayer.isMuted()) {
+    ytPlayer.unMute();
+    document.getElementById('sound-toggle').textContent = '\u{1F50A}';
+  } else {
+    ytPlayer.mute();
+    document.getElementById('sound-toggle').textContent = '\u{1F507}';
+  }
+});
+
 const form = document.getElementById('qualify-form');
 
 form.querySelectorAll('.next-step').forEach((btn) => {
