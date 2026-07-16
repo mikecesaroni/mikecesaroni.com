@@ -96,6 +96,11 @@ h1, h2, h3 {
   text-decoration: none;
 }
 
+.logo-mark {
+  display: block;
+  object-fit: contain;
+}
+
 .logo-word {
   font-family: 'Oswald', sans-serif;
   font-size: 10px;
@@ -376,6 +381,12 @@ h1, h2, h3 {
   color: var(--muted);
   font-size: 14px;
   border-top: 1px solid var(--border);
+}
+
+.footer-logo-mark {
+  display: block;
+  margin: 0 auto 12px;
+  object-fit: contain;
 }
 
 .footer-logo {
