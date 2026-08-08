@@ -28,8 +28,18 @@ const form = document.getElementById('qualify-form');
 form.querySelectorAll('.next-step').forEach((btn) => {
   btn.addEventListener('click', () => {
     const currentStep = btn.closest('.quiz-step');
-    const select = currentStep.querySelector('select, input');
-    if (!select.reportValidity()) return;
+    const checkboxes = currentStep.querySelectorAll('input[type="checkbox"]');
+
+    if (checkboxes.length) {
+      const anyChecked = Array.from(checkboxes).some((cb) => cb.checked);
+      if (!anyChecked) {
+        alert('Please select at least one option.');
+        return;
+      }
+    } else {
+      const field = currentStep.querySelector('select, input');
+      if (!field.reportValidity()) return;
+    }
 
     const nextStep = currentStep.nextElementSibling;
     currentStep.hidden = true;

@@ -376,7 +376,7 @@ h1, h2, h3 {
 }
 
 .quiz-step select,
-.quiz-step input {
+.quiz-step input:not([type="checkbox"]) {
   width: 100%;
   padding: 12px;
   margin-bottom: 16px;
@@ -386,6 +386,29 @@ h1, h2, h3 {
   color: var(--text);
   font-size: 16px;
   font-family: 'Oswald', sans-serif;
+}
+
+.checkbox-group {
+  margin-bottom: 16px;
+}
+
+.checkbox-option {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400 !important;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.checkbox-option input {
+  width: auto;
+  margin: 0;
+  accent-color: var(--accent);
 }
 
 .booking {
