@@ -315,9 +315,16 @@ h1, h2, h3 {
   margin-bottom: 32px;
 }
 
+.testimonial-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
 .testimonial-video-wrap {
+  width: 100%;
   max-width: 340px;
-  margin: 0 auto;
   aspect-ratio: 9 / 16;
   background: #000;
   border: 1px solid var(--border);
