@@ -24,6 +24,11 @@ h1, h2, h3 {
   font-weight: 400;
 }
 
+/* the header is sticky, so anchored sections need clearance */
+section[id] {
+  scroll-margin-top: 90px;
+}
+
 .wrap {
   max-width: 640px;
   margin: 0 auto;
@@ -247,7 +252,11 @@ h1, h2, h3 {
   border-radius: 8px;
   padding: 28px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
+
+.price-card .btn { align-self: flex-start; }
 
 .price-card.featured {
   border-color: var(--accent);
@@ -289,6 +298,7 @@ h1, h2, h3 {
   padding: 0;
   color: var(--muted);
   font-size: 15px;
+  flex: 1;
 }
 
 .price-list li {
@@ -304,6 +314,73 @@ h1, h2, h3 {
   color: var(--accent);
   font-weight: 600;
 }
+
+/* --- marketing plans ------------------------------------------------ */
+
+.marketing {
+  padding: 70px 0;
+  text-align: center;
+}
+
+.marketing h2 {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* the plans lead with the monthly number, unlike the overview cards */
+.price-lg {
+  font-family: 'Anton', sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: 1px;
+  margin: 4px 0 6px;
+}
+
+.price-lg .per {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+.setup {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.price-desc {
+  margin: 0 0 18px;
+  color: var(--text);
+  font-size: 15px;
+}
+
+/* the plans are cumulative: this line carries the tier below it */
+.price-list li.carry {
+  color: var(--accent);
+  font-weight: 600;
+  padding-left: 0;
+  margin-bottom: 14px;
+}
+
+.price-list li.carry::before {
+  content: none;
+}
+
+.cta-note {
+  color: var(--muted);
+  font-size: 15px;
+  margin-top: 28px;
+}
+
 
 .testimonials {
   padding: 70px 0;
@@ -495,5 +572,6 @@ h1, h2, h3 {
 
 @media (max-width: 640px) {
   .hero h1 { font-size: 36px; }
-  .pricing h2, .quiz h2, .booking h2 { font-size: 28px; }
+  .pricing h2, .quiz h2, .booking h2, .marketing h2 { font-size: 28px; }
+  .price-lg { font-size: 34px; }
 }
