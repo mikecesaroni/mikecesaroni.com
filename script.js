@@ -7,12 +7,17 @@
 // published; the quiz keeps emailing leads through FormSubmit either way.
 const GHL_WEBHOOK_URL = '';
 
-// The $165 checkout. Stripe's own link works today. Once Stripe is
-// connected inside GHL, switch to the GHL payment link so W5 can fire:
-// 'https://link.fastpaydirect.com/payment-link/6a986564d6768df054449671'
-const STANDARD_CHECKOUT_URL = 'https://buy.stripe.com/14A9AS0RNaPX6857PVeQM0e';
+// The $165 checkout. This is the GoHighLevel payment link, not the old
+// Stripe-native one: a subscription bought on a Stripe link never reaches
+// GHL (no contact, no tag, no Skool invite), so every $165 button on the
+// site goes through here. If the link is re-issued when the duplicate
+// Stripe prices are consolidated, this is the one line to change.
+const STANDARD_CHECKOUT_URL = 'https://link.fastpaydirect.com/payment-link/6a986564d6768df054449671';
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// Every $165 button on the page uses the same checkout.
+document.querySelectorAll('[data-standard-checkout]').forEach((a) => { a.href = STANDARD_CHECKOUT_URL; });
 
 // ------------------------------------------------------------------
 // Hero video
@@ -179,8 +184,6 @@ function showNextStep(path) {
   const rtNote = nextSection.querySelector('[data-roundtable-note]');
   if (rtNote) rtNote.hidden = !(path === 'webinar' && p.start_choice === 'roundtable');
 
-  const checkout = nextSection.querySelector('[data-standard-checkout]');
-  if (checkout) checkout.href = STANDARD_CHECKOUT_URL;
 
   nextSection.scrollIntoView({ behavior: 'smooth' });
 }
