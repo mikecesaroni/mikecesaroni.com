@@ -487,7 +487,7 @@ section[id] {
 }
 
 .quiz-step select,
-.quiz-step input:not([type="checkbox"]) {
+.quiz-step input:not([type="checkbox"]):not([type="radio"]) {
   width: 100%;
   padding: 12px;
   margin-bottom: 16px;
@@ -522,9 +522,63 @@ section[id] {
   accent-color: var(--accent);
 }
 
+.choice-group { margin-bottom: 8px; }
+
+.quiz-step .hint {
+  display: none;
+  color: var(--accent);
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+.quiz-step.needs-answer .hint { display: block; }
+
+.gate-copy {
+  color: var(--muted);
+  font-size: 15px;
+  margin: -2px 0 14px;
+}
+
+.gate-copy strong { color: var(--text); }
+
+.back-step {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 16px 0 0 18px;
+  color: var(--muted);
+  font: inherit;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.back-step:hover { color: var(--text); }
+
 .booking {
   padding: 70px 0;
   text-align: center;
+}
+
+.booking .path > p { color: var(--muted); }
+
+.booking .path a { color: var(--accent); }
+
+.booking .btn-big { margin-top: 8px; }
+
+.embed-wrap {
+  margin-top: 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-alt);
+}
+
+.embed-wrap iframe {
+  display: block;
+  width: 100%;
+  min-height: 760px;
+  border: 0;
 }
 
 .booking h2 {

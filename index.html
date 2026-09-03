@@ -222,16 +222,16 @@
   <section id="quiz" class="quiz">
     <div class="wrap">
       <h2>See If You <span class="accent-text">Qualify</span></h2>
-      <p>Answer a few quick questions so Mike can prepare for your call.</p>
+      <p>A few quick questions so we point you to the right next step.</p>
 
       <form id="qualify-form" class="quiz-form" action="https://formsubmit.co/mikecesaroni1@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New Round Table Lead">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
 
-        <div class="quiz-step" data-step="1">
-          <label>What industry is your business in?</label>
-          <select name="industry" required>
+        <div class="quiz-step" data-step="industry">
+          <label for="q-industry">What industry is your business in?</label>
+          <select id="q-industry" name="industry" required>
             <option value="" disabled selected>Select one</option>
             <option>HVAC</option>
             <option>Plumbing</option>
@@ -243,9 +243,9 @@
           <button type="button" class="btn next-step">Next</button>
         </div>
 
-        <div class="quiz-step" data-step="2" hidden>
-          <label>What's your current monthly revenue?</label>
-          <select name="revenue" required>
+        <div class="quiz-step" data-step="revenue" hidden>
+          <label for="q-revenue">What's your current monthly revenue?</label>
+          <select id="q-revenue" name="monthly_revenue" required>
             <option value="" disabled selected>Select one</option>
             <option>Just starting out</option>
             <option>$10K &ndash; $30K</option>
@@ -254,61 +254,81 @@
             <option>$150K+</option>
           </select>
           <button type="button" class="btn next-step">Next</button>
+          <button type="button" class="back-step">Back</button>
         </div>
 
-        <div class="quiz-step" data-step="3" hidden>
-          <label>What's your biggest challenge right now?</label>
-          <select name="challenge" required>
-            <option value="" disabled selected>Select one</option>
-            <option>Getting more leads</option>
-            <option>Systems &amp; processes</option>
-            <option>Hiring &amp; team</option>
-            <option>Scaling operations</option>
-            <option>Cash flow</option>
-          </select>
-          <button type="button" class="btn next-step">Next</button>
-        </div>
-
-        <div class="quiz-step" data-step="4" hidden>
-          <label>Are you the owner or a decision maker for this business?</label>
-          <select name="decision_maker" required>
-            <option value="" disabled selected>Select one</option>
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-          <button type="button" class="btn next-step">Next</button>
-        </div>
-
-        <div class="quiz-step" data-step="5" hidden>
-          <label>Which offer(s) are you interested in? (select all that apply)</label>
-          <div class="checkbox-group">
-            <label class="checkbox-option"><input type="checkbox" name="interest" value="The Standard"> The Standard</label>
-            <label class="checkbox-option"><input type="checkbox" name="interest" value="Marketing"> Marketing</label>
-            <label class="checkbox-option"><input type="checkbox" name="interest" value="The Round Table"> The Round Table</label>
+        <div class="quiz-step" data-step="interest" hidden>
+          <label>What are you after?</label>
+          <div class="choice-group">
+            <label class="checkbox-option"><input type="radio" name="interest" value="marketing" required> Marketing, run for me</label>
+            <label class="checkbox-option"><input type="radio" name="interest" value="coaching"> Coaching &amp; community</label>
+            <label class="checkbox-option"><input type="radio" name="interest" value="unsure"> Not sure yet</label>
           </div>
+          <p class="hint">Pick one to continue.</p>
           <button type="button" class="btn next-step">Next</button>
+          <button type="button" class="back-step">Back</button>
         </div>
 
-        <div class="quiz-step" data-step="6" hidden>
-          <label>Name</label>
-          <input type="text" name="name" required>
-          <label>Email</label>
-          <input type="email" name="email" required>
-          <label>Phone</label>
-          <input type="tel" name="phone" required>
-          <button type="submit" class="btn">See My Results</button>
+        <div class="quiz-step" data-step="gate" hidden>
+          <label>Straight up, so we don't waste your time.</label>
+          <p class="gate-copy">Marketing starts with a <strong>one-time $2,500 onboarding</strong> plus <strong>$1,500 a month</strong>. Ad budget is separate and goes to Google and Meta directly. If it's the right fit, are you ready to invest that in the next 30 days?</p>
+          <div class="choice-group">
+            <label class="checkbox-option"><input type="radio" name="gate_answer" value="yes"> Yes, let's talk</label>
+            <label class="checkbox-option"><input type="radio" name="gate_answer" value="not_yet"> Not yet</label>
+          </div>
+          <p class="hint">Pick one to continue.</p>
+          <button type="button" class="btn next-step">Next</button>
+          <button type="button" class="back-step">Back</button>
         </div>
 
+        <div class="quiz-step" data-step="start" hidden>
+          <label>Where do you want to start?</label>
+          <div class="choice-group">
+            <label class="checkbox-option"><input type="radio" name="start_choice" value="standard"> The Standard &mdash; $165/mo, join today</label>
+            <label class="checkbox-option"><input type="radio" name="start_choice" value="roundtable"> The Round Table &mdash; $5,000</label>
+            <label class="checkbox-option"><input type="radio" name="start_choice" value="webinar"> Show me first &mdash; free weekly call with Mike</label>
+          </div>
+          <p class="hint">Pick one to continue.</p>
+          <button type="button" class="btn next-step">Next</button>
+          <button type="button" class="back-step">Back</button>
+        </div>
+
+        <div class="quiz-step" data-step="contact" hidden>
+          <label for="q-name">Name</label>
+          <input id="q-name" type="text" name="name" required autocomplete="name">
+          <label for="q-email">Email</label>
+          <input id="q-email" type="email" name="email" required autocomplete="email">
+          <label for="q-phone">Phone</label>
+          <input id="q-phone" type="tel" name="phone" required autocomplete="tel">
+          <button type="submit" class="btn">Show My Next Step</button>
+          <button type="button" class="back-step">Back</button>
+        </div>
       </form>
     </div>
   </section>
 
-  <section id="booking" class="booking" hidden>
+  <section id="next-step" class="booking" hidden>
     <div class="wrap">
-      <h2>Book Your <span class="accent-text">Free Discovery Call</span></h2>
-      <p>Pick a time below that works for you &mdash; Mike will call you then.</p>
-      <div id="calendly-embed" style="min-width:320px;height:700px;"></div>
-      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <div class="path" data-path="call" hidden>
+        <h2>Book Your <span class="accent-text">15-Minute Call</span></h2>
+        <p>Pick a time that works. Bring your numbers &mdash; Mike will have your answers in front of him.</p>
+        <div class="embed-wrap"><iframe data-src="https://api.leadconnectorhq.com/widget/booking/aMxlJQG3ZtvdrSWDHjfB" title="Book a call with Mike" scrolling="no"></iframe></div>
+      </div>
+
+      <div class="path" data-path="standard" hidden>
+        <h2>Join <span class="accent-text">The Standard</span></h2>
+        <p>$165 a month. One live meeting every Sunday, body, mind and daily ops coaching, and the room to go with it. Your community invite follows your first payment.</p>
+        <a class="btn btn-big" data-standard-checkout href="#" target="_blank" rel="noopener">Join The Standard &rarr;</a>
+        <p class="fine-print"><a href="#next-step" data-switch-path="webinar">Want to see it first? Grab a seat on Mike's free weekly call &rarr;</a></p>
+      </div>
+
+      <div class="path" data-path="webinar" hidden>
+        <h2>Grab a Seat on <span class="accent-text">Mike's Weekly Call</span></h2>
+        <p data-roundtable-note hidden>The Round Table is a $5,000 room, and this call is where Mike walks through what's inside it. Register below and bring your questions. <a href="#next-step" data-switch-path="call">Ready to invest now? Book a call instead &rarr;</a></p>
+        <p>Free, live, about an hour. Mike answers questions and shows you what The Standard and The Round Table actually are.</p>
+        <div class="embed-wrap"><iframe data-src="https://api.leadconnectorhq.com/widget/booking/8mxy614hNidRz9uVEhdp" title="Register for Mike's weekly call" scrolling="no"></iframe></div>
+      </div>
+      <script src="https://link.msgsndr.com/js/form_embed.js" async></script>
     </div>
   </section>
 
