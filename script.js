@@ -3,9 +3,9 @@
 // pieces come online.
 // ------------------------------------------------------------------
 
-// W1 "Website Quiz Submission" inbound webhook. Leave empty until W1 is
-// published; the quiz keeps emailing leads through FormSubmit either way.
-const GHL_WEBHOOK_URL = '';
+// W1 "Website Quiz Submission" inbound webhook. The quiz also keeps
+// emailing leads through FormSubmit until GHL is trusted.
+const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/We1BEHduuoq5X2eA35Sb/webhook-trigger/4c228468-ac1c-4b56-86cd-7a3cbb29474b';
 
 // The $165 checkout. This is the GoHighLevel payment link, not the old
 // Stripe-native one: a subscription bought on a Stripe link never reaches
