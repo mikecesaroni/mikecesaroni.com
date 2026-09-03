@@ -582,3 +582,55 @@ section[id] {
   .pricing h2, .quiz h2, .booking h2, .marketing h2 { font-size: 28px; }
   .price-lg { font-size: 34px; }
 }
+
+/* --- legal pages ---------------------------------------------------- */
+
+.legal {
+  padding: 60px 0 80px;
+}
+
+.legal h1 {
+  font-size: 40px;
+  margin: 0 0 6px;
+}
+
+.legal-meta {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 28px;
+}
+
+.legal h2 {
+  font-size: 22px;
+  margin: 34px 0 10px;
+}
+
+.legal p,
+.legal li {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.legal strong {
+  color: var(--text);
+}
+
+.legal a {
+  color: var(--accent);
+}
+
+.legal ul {
+  padding-left: 22px;
+}
+
+.legal li {
+  margin-bottom: 8px;
+}
+
+.site-footer a {
+  color: var(--muted);
+}
+
+.site-footer a:hover {
+  color: var(--accent);
+}
