@@ -117,10 +117,6 @@ section[id] {
   color: var(--text);
 }
 
-.phone-icon {
-  margin-right: 4px;
-}
-
 .hero {
   padding: 70px 0 50px;
   text-align: center;
