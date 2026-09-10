@@ -1,10 +1,11 @@
 :root {
-  --bg: #0a0a0a;
-  --bg-alt: #141414;
-  --text: #f5f5f5;
-  --muted: #b0b0b0;
-  --accent: #d9b45c;
-  --border: #2a2a2a;
+  --bg: #0d0f11;
+  --bg-alt: #16191d;
+  --text: #f4f2ee;
+  --muted: #99a1a9;
+  --accent: #5c9ed0;
+  --accent-deep: #023f6b;
+  --border: #262b31;
 }
 
 * { box-sizing: border-box; }
@@ -103,6 +104,8 @@ section[id] {
 
 .logo-mark {
   display: block;
+  width: 59px;
+  height: 32px;
   object-fit: contain;
 }
 
@@ -416,6 +419,11 @@ section[id] {
   display: block;
 }
 
+/* Three across on desktop: 3 x 300 plus two 24px gaps fits the 1040 wrap. */
+@media (min-width: 900px) {
+  .testimonial-video-wrap { max-width: 300px; }
+}
+
 .faq {
   padding: 70px 0;
   text-align: center;
@@ -600,19 +608,12 @@ section[id] {
   border-top: 1px solid var(--border);
 }
 
-.footer-logo-mark {
+.footer-lockup {
   display: block;
-  margin: 0 auto 12px;
+  margin: 0 auto 16px;
+  width: 200px;
+  height: auto;
   object-fit: contain;
-}
-
-.footer-logo {
-  display: block;
-  font-family: 'Anton', sans-serif;
-  letter-spacing: 2px;
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: var(--text);
 }
 
 .social-links {
