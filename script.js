@@ -194,3 +194,107 @@ nextSection.addEventListener('click', (e) => {
   e.preventDefault();
   showNextStep(link.dataset.switchPath);
 });
+
+/* Weekly webinar countdown.
+   Counts to the next Tuesday 7:00 PM in New York, whatever timezone the
+   visitor is in. Between 7 and 8 it reads as live; at 8 it rolls to next week.
+   All arithmetic goes through Intl so daylight saving is handled for us. */
+(function () {
+  var box = document.getElementById('countdown');
+  if (!box || typeof Intl === 'undefined' || !Intl.DateTimeFormat) return;
+
+  var TZ = 'America/New_York';
+  var DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var liveEl = document.getElementById('cd-live');
+  var ctaEl = document.getElementById('cd-cta');
+  var whenEl = document.getElementById('cd-when');
+  var out = {
+    days: document.getElementById('cd-days'),
+    hours: document.getElementById('cd-hours'),
+    mins: document.getElementById('cd-mins'),
+    secs: document.getElementById('cd-secs')
+  };
+
+  var partsFmt = new Intl.DateTimeFormat('en-US', {
+    timeZone: TZ, hour12: false, weekday: 'short',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  });
+
+  var labelFmt = new Intl.DateTimeFormat('en-US', {
+    timeZone: TZ, weekday: 'long', month: 'long', day: 'numeric'
+  });
+
+  // Wall-clock reading of an instant, in New York.
+  function etParts(ts) {
+    var o = {};
+    partsFmt.formatToParts(new Date(ts)).forEach(function (p) { o[p.type] = p.value; });
+    return {
+      y: +o.year, m: +o.month, d: +o.day,
+      hh: +o.hour % 24, mm: +o.minute, ss: +o.second,
+      wd: DAYS.indexOf(o.weekday)
+    };
+  }
+
+  // The instant at which New York's clock reads this date and hour.
+  function etWallToTs(y, m, d, hour) {
+    var want = Date.UTC(y, m - 1, d, hour, 0, 0);
+    var ts = want;
+    for (var i = 0; i < 3; i++) {
+      var p = etParts(ts);
+      ts += want - Date.UTC(p.y, p.m - 1, p.d, p.hh, p.mm, p.ss);
+    }
+    return ts;
+  }
+
+  // Calendar arithmetic on the New York date, so a DST change can't shift it.
+  function addDays(p, n) {
+    var d = new Date(Date.UTC(p.y, p.m - 1, p.d));
+    d.setUTCDate(d.getUTCDate() + n);
+    return { y: d.getUTCFullYear(), m: d.getUTCMonth() + 1, d: d.getUTCDate() };
+  }
+
+  function nextCall(now) {
+    var p = etParts(now);
+    if (p.wd === 2) {
+      var start = etWallToTs(p.y, p.m, p.d, 19);
+      var end = etWallToTs(p.y, p.m, p.d, 20);
+      if (now >= start && now < end) return { live: true, at: start };
+      if (now < start) return { live: false, at: start };
+      var nextWeek = addDays(p, 7);
+      return { live: false, at: etWallToTs(nextWeek.y, nextWeek.m, nextWeek.d, 19) };
+    }
+    var ahead = (2 - p.wd + 7) % 7;
+    var target = addDays(p, ahead);
+    return { live: false, at: etWallToTs(target.y, target.m, target.d, 19) };
+  }
+
+  function tick() {
+    var now = Date.now();
+    var call = nextCall(now);
+
+    if (call.live) {
+      box.hidden = true;
+      liveEl.hidden = false;
+      ctaEl.textContent = 'Join The Call →';
+      whenEl.textContent = 'Mike is on now. Register and you go straight in.';
+      return;
+    }
+
+    liveEl.hidden = true;
+    box.hidden = false;
+    ctaEl.textContent = 'Save My Seat →';
+    whenEl.textContent = 'Next call: ' + labelFmt.format(new Date(call.at)) + ' at 7:00 PM Eastern.';
+
+    var left = Math.max(0, call.at - now);
+    var secs = Math.floor(left / 1000);
+    function pad(n) { return n < 10 ? '0' + n : String(n); }
+    out.days.textContent = Math.floor(secs / 86400);
+    out.hours.textContent = pad(Math.floor(secs % 86400 / 3600));
+    out.mins.textContent = pad(Math.floor(secs % 3600 / 60));
+    out.secs.textContent = pad(secs % 60);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
