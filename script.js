@@ -276,7 +276,7 @@ nextSection.addEventListener('click', (e) => {
     if (call.live) {
       box.hidden = true;
       liveEl.hidden = false;
-      ctaEl.textContent = 'Join The Call →';
+      ctaEl.textContent = 'Join The Webinar →';
       whenEl.textContent = 'Mike is on now. Register and you go straight in.';
       return;
     }
@@ -284,7 +284,7 @@ nextSection.addEventListener('click', (e) => {
     liveEl.hidden = true;
     box.hidden = false;
     ctaEl.textContent = 'Save My Seat →';
-    whenEl.textContent = 'Next call: ' + labelFmt.format(new Date(call.at)) + ' at 7:00 PM Eastern.';
+    whenEl.textContent = 'Next free webinar: ' + labelFmt.format(new Date(call.at)) + ' at 7:00 PM Eastern.';
 
     var left = Math.max(0, call.at - now);
     var secs = Math.floor(left / 1000);
