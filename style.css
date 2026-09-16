@@ -594,8 +594,15 @@ section[id] {
 .embed-wrap iframe {
   display: block;
   width: 100%;
-  min-height: 760px;
+  /* the GoHighLevel widget is taller than this on its details step, and its
+     auto-resize script does not reach an iframe we build ourselves, so the
+     frame scrolls internally rather than clipping the confirm button */
+  min-height: 860px;
   border: 0;
+}
+
+@media (max-width: 600px) {
+  .embed-wrap iframe { min-height: 1040px; }
 }
 
 .booking h2 {
