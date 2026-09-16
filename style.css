@@ -380,12 +380,6 @@ section[id] {
   margin-top: 28px;
 }
 
-/* in the booking paths it sits directly under the intro line */
-.booking .path > .cta-note {
-  margin-top: 6px;
-  font-size: 14px;
-}
-
 
 .testimonials {
   padding: 70px 0;
