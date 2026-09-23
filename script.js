@@ -12,12 +12,10 @@ const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/We1BEHduuoq5
 // GHL (no contact, no tag, no Skool invite), so every $165 button on the
 // site goes through here. If the link is re-issued when the duplicate
 // Stripe prices are consolidated, this is the one line to change.
-const STANDARD_CHECKOUT_URL = 'https://link.fastpaydirect.com/payment-link/6a986564d6768df054449671';
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // Every $165 button on the page uses the same checkout.
-document.querySelectorAll('[data-standard-checkout]').forEach((a) => { a.href = STANDARD_CHECKOUT_URL; });
 
 // ------------------------------------------------------------------
 // Hero video
@@ -60,15 +58,14 @@ function answer(name) {
   return el ? el.value : '';
 }
 
-// The routing. Marketing hits the money gate; a Yes goes straight to
-// contact details and the calendar. Everyone else picks a starting point.
+// The routing. Marketing hits the money gate; everyone else goes straight
+// to contact details. There is one destination now, the 15-minute call.
 function nextStep(current) {
   switch (current) {
     case 'industry': return 'revenue';
     case 'revenue':  return 'interest';
-    case 'interest': return answer('interest') === 'marketing' ? 'gate' : 'start';
-    case 'gate':     return answer('gate_answer') === 'yes' ? 'contact' : 'start';
-    case 'start':    return 'contact';
+    case 'interest': return answer('interest') === 'marketing' ? 'gate' : 'contact';
+    case 'gate':     return 'contact';
     default:         return null;
   }
 }
@@ -109,14 +106,10 @@ form.addEventListener('change', (e) => {
 // tag W7 (the 30-day nurture) triggers on, so it has to be exact.
 function routeFor(a) {
   if (a.gate_answer === 'yes') return { path: 'call', tags: ['mkt-qualified'] };
-  const byChoice = { standard: 'standard-interest', roundtable: 'rt-interest' };
   const tags = [];
   if (a.gate_answer === 'not_yet') tags.push('mkt-not-yet');
-  if (byChoice[a.start_choice]) tags.push(byChoice[a.start_choice]);
   if (!tags.length) tags.push('coaching-interest');
-  // The webinar is gone, so everything that is not the $165 checkout lands on
-  // the 15-minute call. That is now the only other place to send anyone.
-  return { path: a.start_choice === 'standard' ? 'standard' : 'call', tags };
+  return { path: 'call', tags };
 }
 
 form.addEventListener('submit', (e) => {
@@ -128,7 +121,6 @@ form.addEventListener('submit', (e) => {
     monthly_revenue: data.get('monthly_revenue'),
     interest: data.get('interest'),
     gate_answer: data.get('gate_answer') || '',
-    start_choice: data.get('start_choice') || '',
   };
   const route = routeFor(answers);
   const payload = {
@@ -163,8 +155,8 @@ form.addEventListener('submit', (e) => {
 });
 
 // ------------------------------------------------------------------
-// The next step, inline: the call calendar or the $165 checkout. The
-// calendar is a GHL booking widget, prefilled.
+// The next step, inline: the 15-minute call calendar, a GHL booking
+// widget, prefilled from the quiz answers.
 // ------------------------------------------------------------------
 const nextSection = document.getElementById('next-step');
 
@@ -184,7 +176,7 @@ function showNextStep(path) {
   }
 
   const rtNote = nextSection.querySelector('[data-roundtable-note]');
-  if (rtNote) rtNote.hidden = !(path === 'call' && p.start_choice === 'roundtable');
+  if (rtNote) rtNote.hidden = !(p.interest === 'coaching');
 
 
   nextSection.scrollIntoView({ behavior: 'smooth' });
