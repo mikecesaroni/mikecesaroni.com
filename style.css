@@ -326,6 +326,20 @@ section[id] {
   margin-bottom: 16px;
 }
 
+/* the positioning line: brighter and larger than the detail beneath it, but
+   body type, so it does not fight the Anton heading above it */
+.section-lead {
+  font-size: 23px;
+  line-height: 1.4;
+  color: var(--fg);
+  max-width: 760px;
+  margin: 0 auto 14px;
+}
+
+@media (max-width: 540px) {
+  .section-lead { font-size: 20px; }
+}
+
 .section-sub {
   color: var(--muted);
   font-size: 17px;
