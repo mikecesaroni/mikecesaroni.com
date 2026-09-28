@@ -720,14 +720,24 @@ section[id] {
   text-align: center;
 }
 
+/* the section runs wider than the rest of the page: a 2000px dashboard
+   squeezed into 1040px is unreadable, and the extra width is what makes
+   it look deliberate rather than pasted in */
+.reporting .wrap-wide { max-width: 1320px; }
+
+/* the list shares the frame's exact left and right edges, so the block
+   reads as one column instead of three widths drifting */
 .track-list {
   list-style: none;
   padding: 0;
-  margin: 30px auto 42px;
-  max-width: 780px;
+  margin: 30px 0 42px;
   text-align: left;
   display: grid;
-  gap: 14px;
+  gap: 14px 40px;
+}
+
+@media (min-width: 900px) {
+  .track-list { grid-template-columns: 1fr 1fr; }
 }
 
 .track-list li {
@@ -779,7 +789,6 @@ section[id] {
 
 .shot-frame {
   position: relative;
-  max-width: 1100px;
   margin: 0 auto;
   background: var(--bg);
   border: 1px solid var(--border);
