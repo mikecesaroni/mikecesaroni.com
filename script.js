@@ -188,3 +188,28 @@ nextSection.addEventListener('click', (e) => {
   e.preventDefault();
   showNextStep(link.dataset.switchPath);
 });
+
+
+// ------------------------------------------------------------------
+// Reporting screenshots. Three views behind tabs so the section does not
+// run three screens tall.
+// ------------------------------------------------------------------
+(function () {
+  var tabs = document.querySelectorAll('.shot-tab');
+  var panes = document.querySelectorAll('.shot-pane');
+  if (!tabs.length) return;
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var want = tab.dataset.shot;
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle('is-on', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panes.forEach(function (pane) {
+        pane.classList.toggle('is-on', pane.dataset.pane === want);
+      });
+    });
+  });
+})();

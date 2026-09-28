@@ -706,3 +706,120 @@ section[id] {
 .site-footer a:hover {
   color: var(--accent);
 }
+
+/* ------------------------------------------------------------------
+   Reporting proof. The screenshots are 2000px wide and unreadable on a
+   phone, so the list above them carries the claim and the image is the
+   evidence. Tapping opens the full file.
+   ------------------------------------------------------------------ */
+.reporting {
+  padding: 90px 0;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.track-list {
+  list-style: none;
+  padding: 0;
+  margin: 30px auto 42px;
+  max-width: 780px;
+  text-align: left;
+  display: grid;
+  gap: 14px;
+}
+
+.track-list li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.track-list li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.track-list strong { color: var(--fg); font-weight: 600; }
+
+.shot-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.shot-tab {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color .15s, border-color .15s, background .15s;
+}
+
+.shot-tab:hover { color: var(--fg); }
+
+.shot-tab.is-on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.shot-frame {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* fake browser bar, so it reads as a real product and not a slide */
+.shot-chrome {
+  display: flex;
+  gap: 7px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.shot-chrome span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.shot-pane { display: none; }
+.shot-pane.is-on { display: block; }
+
+.shot-pane img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.shot-note {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 14px;
+}
+
+@media (max-width: 540px) {
+  .reporting { padding: 64px 0; }
+  .track-list li { font-size: 15px; }
+  .shot-tab { padding: 8px 14px; font-size: 13px; }
+}
