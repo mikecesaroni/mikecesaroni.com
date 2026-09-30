@@ -832,3 +832,14 @@ section[id] {
   .track-list li { font-size: 15px; }
   .shot-tab { padding: 8px 14px; font-size: 13px; }
 }
+
+/* scope strings in the Google disclosure: long, must not blow out the column */
+.legal code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
